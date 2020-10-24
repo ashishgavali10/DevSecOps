@@ -14,9 +14,9 @@ pipeline {
     }
     stage ('Check git secrets'){
       steps{
-              sh 'rm trufflehog || true'
+              
               sh 'docker run dxa4481/trufflehog --json https://github.com/ashishgavali10/DevSecOps.git'
-              '
+            
       }
     }
     stage ('Build') {
