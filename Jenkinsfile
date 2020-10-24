@@ -9,7 +9,16 @@ pipeline {
         sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
-            ''' 
+           ''' 
+      }
+    }
+    stage ('Check git secrets'){
+      steps{
+        sh '''
+              rm trufflehog || true
+              docker run dxa4481/trufflehog --json https://github.com/ashishgavali10/DevSecOps.git > trufflehog
+              cat trufflehog
+           '''
       }
     }
     stage ('Build') {
