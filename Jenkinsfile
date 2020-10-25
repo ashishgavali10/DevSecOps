@@ -28,6 +28,13 @@ pipeline {
            
       }
     }
+    stage('SAST'){
+      steps{
+        withSonarQubeEnv('sonarqube'){
+          sh 'mvn sonar:sonar'
+        }
+      }
+    }
     
     stage ('Build') {
       steps {
