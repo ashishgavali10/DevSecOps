@@ -22,7 +22,7 @@ pipeline {
     stage('Software composition analysis'){
       steps{
             sh 'rm owasp* || true'
-            sh 'wget https://github.com/ashishgavali10/DevSecOps/blob/master/owasp-dependency-check.sh'
+            sh 'wget https://raw.githubusercontent.com/ashishgavali10/DevSecOps/master/owasp-dependency-check.sh'
             sh 'chmod +x owasp-dependency-check.sh'
             sh 'bash ./owasp-dependency-check.sh'
             sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
